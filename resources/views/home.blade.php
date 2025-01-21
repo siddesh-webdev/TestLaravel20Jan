@@ -11,7 +11,7 @@
         th,td{
             border: 1px solid;
             text-align: center;
-            padding: 10px;  e
+            padding: 10px;  
         }
         #createUser{
             padding: 20px;
@@ -40,7 +40,8 @@
 </body>
 </html>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+
+    function showUser(){
         var htmlData = `<table>
                             <tr>
                                 <th>Sr.no</th>
@@ -81,6 +82,9 @@
             } 
         };
         xhr.send();
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+        showUser();
     }); 
 
     let createUser = document.getElementById("createUser");
@@ -112,7 +116,7 @@
 
             xhr.onload = function() {
                 if (this.status == 200) {
-                    window.location.href = "{{url('/users')}}";
+                    showUser();
                 } else {
                     alert("Error occurred!");
                 }
@@ -129,7 +133,8 @@
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.onload = function() {
                     if (this.status == 200) {
-                        window.location.href = "{{url('/users')}}";
+                        // window.location.href = "{{url('/users')}}";
+                          showUser();
                     } else {
                         alert("Error occurred!");
                     }
